@@ -68,14 +68,14 @@
 
         #love-message {
             display: none;
-            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.7);
+            position: fixed; top: 12%; left: 50%; transform: translateX(-50%) scale(0.7);
             z-index: 10000; text-align: center;
             opacity: 0; transition: opacity 1.2s ease, transform 1.2s ease;
             pointer-events: none;
         }
         #love-message.visible {
             display: block;
-            opacity: 1; transform: translate(-50%, -50%) scale(1);
+            opacity: 1; transform: translateX(-50%) scale(1);
         }
         #love-message .msg-box {
             background: rgba(40, 15, 35, 0.92);
@@ -166,10 +166,8 @@
 <canvas id="celebration-overlay"></canvas>
 <div id="love-message">
     <div class="msg-box">
-        <div class="heart-big">💕</div>
-        <h1>Happy 3 Months!</h1>
-        <p>Every piece of this puzzle is like<br>every moment with you — perfect<br>when it all comes together.</p>
-        <p class="date">3 Months & Forever To Go 💕</p>
+        <div class="heart-big">🎉</div>
+        <h1>yayayyy!💕</h1>
     </div>
 </div>
 
@@ -764,6 +762,12 @@
             // Force reflow for transition
             msg.offsetHeight;
             msg.classList.add('visible');
+
+            // Hide after 4 seconds
+            setTimeout(() => {
+                msg.classList.remove('visible');
+                setTimeout(() => { msg.style.display = 'none'; }, 1200);
+            }, 4000);
         }, 1800);
 
         // Play celebration sound
